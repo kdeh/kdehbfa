@@ -173,16 +173,16 @@
         
 //        ///////////////////////////////////////////////////////////
 //        // add a static cube
-        geometry = new THREE.CubeGeometry(1,1,1);
-        material = new THREE.MeshNormalMaterial({
-            transparent : true,
-            opacity: 0.5,
-            side: THREE.DoubleSide
-        }); 
-        mesh = new THREE.Mesh( geometry, material );
-        mesh.position.y	= geometry.parameters.height/2
-        arWorldRoot.add(mesh);
-//        // end cube code
+//        geometry = new THREE.CubeGeometry(1,1,1);
+//        material = new THREE.MeshNormalMaterial({
+//            transparent : true,
+//            opacity: 0.5,
+//            side: THREE.DoubleSide
+//        }); 
+//        mesh = new THREE.Mesh( geometry, material );
+//        mesh.position.y	= geometry.parameters.height/2
+//        arWorldRoot.add(mesh);
+////        // end cube code
 //        ///////////////////////////////////////////////////////////
         
     
@@ -195,6 +195,11 @@
         material = new THREE.MeshNormalMaterial({shading: THREE.FlatShading});
         mesh = new THREE.Mesh(geometry, material);
         
+        geometry = new THREE.TorusKnotGeometry(76.49, 26.88, 70, 37, 7.07, 4.95, 1);
+material = new THREE.MeshNormalMaterial({shading: THREE.FlatShading});
+mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+        
         //Keep these lines
         mesh.position.y	= 0.5 //position y equals how far away from target 
         arWorldRoot.add( mesh ); //instead of adding mesh to the scene right away we add only when the target is detected
@@ -202,127 +207,125 @@
         ///////////////////////////////////////////////////////////
         
         
-        /////////////////////////////////////////////////////////
-        // add a taurus with rotation animation
-        geometry = new THREE.TorusKnotGeometry(0.3,0.1,64,16);
-        material = new THREE.MeshNormalMaterial(); 
-        mesh = new THREE.Mesh( geometry, material );
-        mesh.position.y	= 0.5
-        arWorldRoot.add( mesh );
-        onRenderFcts.push(function(){
-            mesh.rotation.x += 0.1
-        })
-        // end taurus code
-       /////////////////////////////////////////////////////////
-        
-        
-        ///////////////////////////////////////////////////////////
-        // add a fbx model with animation
-        var loader = new THREE.FBXLoader();
-        loader.load( '../../data/data/handGLoptB.fbx', function ( object ) {
-            object.mixer = new THREE.AnimationMixer( object );
-            mixers.push( object.mixer );
-            var action = object.mixer.clipAction( object.animations[ 0 ] );
-            action.play();
-            object.traverse( function ( child ) {
-                if ( child.isMesh ) {
-                    child.castShadow = true;
-                    child.receiveShadow = true;
-                }
-            } );
-            object.scale.set(.02, .02, .02);
-            arWorldRoot.add( object );
-        } );
-        //end fbx code
-        ///////////////////////////////////////////////////////////
-        
-        
-        ///////////////////////////////////////////////////////////
-         //add obj model (static)
-         // obj texture from jpg
-
-         var manager = new THREE.LoadingManager();
-         manager.onProgress = function ( item, loaded, total ) {
-
-             console.log( item, loaded, total );
-
-         };
-
-         var textureLoader = new THREE.TextureLoader( manager );
-         var texture = textureLoader.load( '../../data/data/cheetah.jpeg' );
-
-         // obj model
-         var onProgress = function ( xhr ) {
-             if ( xhr.lengthComputable ) {
-                 var percentComplete = xhr.loaded / xhr.total * 100;
-                 console.log( Math.round(percentComplete, 2) + '% downloaded' );
-             }
-         };
-
-         var onError = function ( xhr ) {
-         };
-
-         var loader = new THREE.OBJLoader( manager );
-         loader.load( '../../data/data/male02/male02.obj', function ( object ) {
-
-             object.traverse( function ( child ) {
-
-                 if ( child instanceof THREE.Mesh ) {
-
-                     child.material.map = texture;
-
-                 }
-
-             } );
-
- //					object.position.y = - 95;
- //					scene.add( object );
-             object.scale.set(.02, .02, .02);
-             arWorldRoot.add( object );
-
-         }, onProgress, onError );
-
-         //end obj code
-        ///////////////////////////////////////////////////////////
-        
-        
-         ///////////////////////////////////////////////////////////
-         //add obj model2 (static) with material textures
-
-        var onProgress = function ( xhr ) {
-            if ( xhr.lengthComputable ) {
-                var percentComplete = xhr.loaded / xhr.total * 100;
-                console.log( Math.round( percentComplete, 2 ) + '% downloaded' );
-            }
-        };
-        var onError = function () { };
-        THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
-        new THREE.MTLLoader()
-            .setPath( '../../data/data/' )
-            //.load( 'obj-material-test2.mtl', function ( materials ) {
-	    .load( 'vendingmachineblue.mtl', function ( materials ) {
-                materials.preload();
-                new THREE.OBJLoader()
-                    .setMaterials( materials )
-                    .setPath( '../../data/data/' )
-                    //.load( 'obj-material-test2.obj', function ( object ) {
-		.load( 'vendingmachineblue.obj', function ( object ) {
-                        object.scale.set(.1, .1, .1);
-                        arWorldRoot.add( object );
-                    }, onProgress, onError );
-            } );
-        
-
-
-         //end obj2 code
-        ///////////////////////////////////////////////////////////
-        
-        
-        
-        //////////FROM FBX IMPORT
-        stats = new Stats();
-        container.appendChild( stats.dom );
-        
+//        /////////////////////////////////////////////////////////
+//        // add a taurus with rotation animation
+//        geometry = new THREE.TorusKnotGeometry(0.3,0.1,64,16);
+//        material = new THREE.MeshNormalMaterial(); 
+//        mesh = new THREE.Mesh( geometry, material );
+//        mesh.position.y	= 0.5
+//        arWorldRoot.add( mesh );
+//        onRenderFcts.push(function(){
+//            mesh.rotation.x += 0.1
+//        })
+//        // end taurus code
+//       /////////////////////////////////////////////////////////
+//        
+//        
+//        ///////////////////////////////////////////////////////////
+//        // add a fbx model with animation
+//        var loader = new THREE.FBXLoader();
+//        loader.load( '../../data/data/handGLoptB.fbx', function ( object ) {
+//            object.mixer = new THREE.AnimationMixer( object );
+//            mixers.push( object.mixer );
+//            var action = object.mixer.clipAction( object.animations[ 0 ] );
+//            action.play();
+//            object.traverse( function ( child ) {
+//                if ( child.isMesh ) {
+//                    child.castShadow = true;
+//                    child.receiveShadow = true;
+//                }
+//            } );
+//            object.scale.set(.02, .02, .02);
+//            arWorldRoot.add( object );
+//        } );
+//        //end fbx code
+//        ///////////////////////////////////////////////////////////
+//        
+//        
+//        ///////////////////////////////////////////////////////////
+//         //add obj model (static)
+//         // obj texture from jpg
+//
+//         var manager = new THREE.LoadingManager();
+//         manager.onProgress = function ( item, loaded, total ) {
+//
+//             console.log( item, loaded, total );
+//
+//         };
+//
+//         var textureLoader = new THREE.TextureLoader( manager );
+//         var texture = textureLoader.load( '../../data/data/cheetah.jpeg' );
+//
+//         // obj model
+//         var onProgress = function ( xhr ) {
+//             if ( xhr.lengthComputable ) {
+//                 var percentComplete = xhr.loaded / xhr.total * 100;
+//                 console.log( Math.round(percentComplete, 2) + '% downloaded' );
+//             }
+//         };
+//
+//         var onError = function ( xhr ) {
+//         };
+//
+//         var loader = new THREE.OBJLoader( manager );
+//         loader.load( '../../data/data/male02/male02.obj', function ( object ) {
+//
+//             object.traverse( function ( child ) {
+//
+//                 if ( child instanceof THREE.Mesh ) {
+//
+//                     child.material.map = texture;
+//
+//                 }
+//
+//             } );
+//
+// //					object.position.y = - 95;
+// //					scene.add( object );
+//             object.scale.set(.02, .02, .02);
+//             arWorldRoot.add( object );
+//
+//         }, onProgress, onError );
+//
+//         //end obj code
+//        ///////////////////////////////////////////////////////////
+//        
+//        
+//         ///////////////////////////////////////////////////////////
+//         //add obj model2 (static) with material textures
+//
+//        var onProgress = function ( xhr ) {
+//            if ( xhr.lengthComputable ) {
+//                var percentComplete = xhr.loaded / xhr.total * 100;
+//                console.log( Math.round( percentComplete, 2 ) + '% downloaded' );
+//            }
+//        };
+//        var onError = function () { };
+//        THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
+//        new THREE.MTLLoader()
+//            .setPath( '../../data/data/' )
+//            .load( 'obj-material-test2.mtl', function ( materials ) {
+//                materials.preload();
+//                new THREE.OBJLoader()
+//                    .setMaterials( materials )
+//                    .setPath( '../../data/data/' )
+//                    .load( 'obj-material-test2.obj', function ( object ) {
+//                        object.scale.set(.4, .4, .4);
+//                        arWorldRoot.add( object );
+//                    }, onProgress, onError );
+//            } );
+//        
+//
+//
+//         //end obj2 code
+//        ///////////////////////////////////////////////////////////
+//        
+//        
+//        
+//        //////////FROM FBX IMPORT
+//        stats = new Stats();
+//        container.appendChild( stats.dom );
+//        
 	//////////////////////////////////////////////////////////////////////////////////
 	//		render the whole thing on the page
 	//////////////////////////////////////////////////////////////////////////////////
