@@ -35,9 +35,10 @@
 				
 				
 				// paste your code from the geometryGUI here
-				geometry = new THREE.TorusGeometry(100, 31.2, 40, 40, 47.12);
+				geometry = new THREE.TorusGeometry(130.41, 26.88, 40, 21, 25.13);
 material = new THREE.MeshNormalMaterial({shading: THREE.FlatShading});
 mesh = new THREE.Mesh(geometry, material);
+mesh.scale.x = mesh.scale.y = mesh.scale.z = 0.54;
 scene.add(mesh);
 
 
@@ -48,9 +49,7 @@ scene.add(mesh);
 
 				requestAnimationFrame( draw );
 				
-				mesh.rotation.x = Date.now() * 0.0005;	
-				mesh.rotation.y = Date.now() * 0.0002;	
-				mesh.rotation.z = Date.now() * 0.001;
+				// experiment with code from the snippets menu here
 
 				renderer.render( scene, camera );
 

@@ -188,16 +188,21 @@
     
         
         ///////////////////////////////////////////////////////////
-        //add icosphere test from 3js playground
-        geometry = new THREE.CubeGeometry(1, 1, 1);
-        material = new THREE.MeshNormalMaterial({shading: THREE.FlatShading});
-        mesh = new THREE.Mesh(geometry, material);
-        mesh.position.y	= 0.5 //position y equals how far away from target 
-        arWorldRoot.add( mesh ); //instead of adding mesh to the scene right away we add only when the target is detected
-        //end icosphere code
+//        //add icosphere test from 3js playground
+//        geometry = new THREE.CubeGeometry(1, 1, 1);
+//        material = new THREE.MeshNormalMaterial({shading: THREE.FlatShading});
+//        mesh = new THREE.Mesh(geometry, material);
+//        mesh.position.y	= 0.5 //position y equals how far away from target 
+//        arWorldRoot.add( mesh ); //instead of adding mesh to the scene right away we add only when the target is detected
+//        //end icosphere code
         ///////////////////////////////////////////////////////////
         
-        
+//own code is here
+geometry = new THREE.TorusGeometry(130.41, 26.88, 40, 21, 25.13);
+material = new THREE.MeshNormalMaterial({shading: THREE.FlatShading});
+mesh = new THREE.Mesh(geometry, material);
+mesh.scale.x = mesh.scale.y = mesh.scale.z = 0.54;
+scene.add(mesh);
 //        ///////////////////////////////////////////////////////////
 ////        // add a taurus with rotation animation
 ////        geometry = new THREE.TorusKnotGeometry(0.3,0.1,64,16);
