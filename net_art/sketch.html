@@ -46,13 +46,7 @@ scene.add(mesh);
 
 			function draw() {
 
-				requestAnimationFrame( draw );
-				
-				mesh.rotation.x = Date.now() * 0.0005;	
-				mesh.rotation.y = Date.now() * 0.0002;	
-				mesh.rotation.z = Date.now() * 0.001;
 
-				renderer.render( scene, camera );
 
 			}
 
