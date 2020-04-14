@@ -208,7 +208,6 @@
         material = new THREE.MeshNormalMaterial(); 
         mesh = new THREE.Mesh( geometry, material );
         mesh.position.y	= 0.5
-         mesh.scale.x = mesh.scale.y = mesh.scale.z = 0.54;
         arWorldRoot.add( mesh );
         onRenderFcts.push(function(){
             mesh.rotation.x += 0.1
