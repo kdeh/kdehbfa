@@ -220,7 +220,7 @@
 //        // end taurus code
 //       /////////////////////////////////////////////////////////
 //        
-//        
+//        //ANIMATIONS HERE
 //        ///////////////////////////////////////////////////////////
 //        // add a fbx model with animation
 //        var loader = new THREE.FBXLoader();
@@ -290,30 +290,30 @@
 //         //end obj code
 //        ///////////////////////////////////////////////////////////
 //        
-//        
+//        use for blender textures if static obj 
 //         ///////////////////////////////////////////////////////////
 //         //add obj model2 (static) with material textures
 //
-//        var onProgress = function ( xhr ) {
-//            if ( xhr.lengthComputable ) {
-//                var percentComplete = xhr.loaded / xhr.total * 100;
-//                console.log( Math.round( percentComplete, 2 ) + '% downloaded' );
-//            }
-//        };
-//        var onError = function () { };
-//        THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
-//        new THREE.MTLLoader()
-//            .setPath( '../../data/data/' )
-//            .load( 'obj-material-test2.mtl', function ( materials ) {
-//                materials.preload();
-//                new THREE.OBJLoader()
-//                    .setMaterials( materials )
-//                    .setPath( '../../data/data/' )
-//                    .load( 'obj-material-test2.obj', function ( object ) {
-//                        object.scale.set(.4, .4, .4);
-//                        arWorldRoot.add( object );
-//                    }, onProgress, onError );
-//            } );
+        var onProgress = function ( xhr ) {
+            if ( xhr.lengthComputable ) {
+                var percentComplete = xhr.loaded / xhr.total * 100;
+                console.log( Math.round( percentComplete, 2 ) + '% downloaded' );
+            }
+        };
+        var onError = function () { };
+        THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
+        new THREE.MTLLoader()
+            .setPath( '../../data/data/' )
+            .load( 'obj-material-test2.mtl', function ( materials ) {
+                materials.preload();
+                new THREE.OBJLoader()
+                    .setMaterials( materials )
+                    .setPath( '../../data/data/' )
+                    .load( 'obj-material-test2.obj', function ( object ) {
+                        object.scale.set(.4, .4, .4);
+                        arWorldRoot.add( object );
+                    }, onProgress, onError );
+            } );
 //        
 //
 //
