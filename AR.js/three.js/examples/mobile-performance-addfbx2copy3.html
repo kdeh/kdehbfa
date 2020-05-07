@@ -147,7 +147,7 @@
             type : 'pattern',
             ////////////////////////////////////////////////////////////////////////////////
             //   Add your custom image here and comment out existing file (hiro or kanji)
-            ////////////////////////////////////////////////////////////////////////////////
+//            patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/kdeh_ar_code.patt' ////////////////////////////////////////////////////////////////////////////////
             patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.hiro'
             // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
         })
@@ -173,16 +173,16 @@
         
 //        ///////////////////////////////////////////////////////////
 //        // add a static cube
-        geometry = new THREE.CubeGeometry(1,1,1);
-        material = new THREE.MeshNormalMaterial({
-            transparent : true,
-            opacity: 0.5,
-            side: THREE.DoubleSide
-        }); 
-        mesh = new THREE.Mesh( geometry, material );
-        mesh.position.y	= geometry.parameters.height/2
-        arWorldRoot.add(mesh);
-////        // end cube code
+//        geometry = new THREE.CubeGeometry(1,1,1);
+//        material = new THREE.MeshNormalMaterial({
+//            transparent : true,
+//            opacity: 0.5,
+//            side: THREE.DoubleSide
+//        }); 
+//        mesh = new THREE.Mesh( geometry, material );
+//        mesh.position.y	= geometry.parameters.height/2
+//        arWorldRoot.add(mesh);
+//////        // end cube code
 //        ///////////////////////////////////////////////////////////
         
     
@@ -246,48 +246,48 @@
 //         //add obj model (static)
 //         // obj texture from jpg
 //
-         var manager = new THREE.LoadingManager();
-         manager.onProgress = function ( item, loaded, total ) {
-
-             console.log( item, loaded, total );
-
-         };
-
-         var textureLoader = new THREE.TextureLoader( manager );
-         var texture = textureLoader.load( '../../data/data/cheetah.jpeg' );
-
-         // obj model
-         var onProgress = function ( xhr ) {
-             if ( xhr.lengthComputable ) {
-                 var percentComplete = xhr.loaded / xhr.total * 100;
-                 console.log( Math.round(percentComplete, 2) + '% downloaded' );
-             }
-         };
-
-         var onError = function ( xhr ) {
-         };
-
-         var loader = new THREE.OBJLoader( manager );
-         loader.load( '../../data/data/kdehbfa/teacup2.obj', function ( object ) {
-
-             object.traverse( function ( child ) {
-
-                 if ( child instanceof THREE.Mesh ) {
-
-                     child.material.map = texture;
-
-                 }
-
-             } );
-
- //					object.position.y = - 95;
- //					scene.add( object );
-             object.scale.set(.02, .02, .02);
-             arWorldRoot.add( object );
-
-         }, onProgress, onError );
+//         var manager = new THREE.LoadingManager();
+//         manager.onProgress = function ( item, loaded, total ) {
 //
-//         //end obj code
+//             console.log( item, loaded, total );
+//
+//         };
+//
+//         var textureLoader = new THREE.TextureLoader( manager );
+//         var texture = textureLoader.load( '../../data/data/cheetah.jpeg' );
+//
+//         // obj model
+//         var onProgress = function ( xhr ) {
+//             if ( xhr.lengthComputable ) {
+//                 var percentComplete = xhr.loaded / xhr.total * 100;
+//                 console.log( Math.round(percentComplete, 2) + '% downloaded' );
+//             }
+//         };
+//
+//         var onError = function ( xhr ) {
+//         };
+//
+//         var loader = new THREE.OBJLoader( manager );
+//         loader.load( '../../data/data/kdehbfa/setting.obj', function ( object ) {
+//
+//             object.traverse( function ( child ) {
+//
+//                 if ( child instanceof THREE.Mesh ) {
+//
+//                     child.material.map = texture;
+//
+//                 }
+//
+//             } );
+//
+// //					object.position.y = - 95;
+// //					scene.add( object );
+//             object.scale.set(.02, .02, .02);
+//             arWorldRoot.add( object );
+//
+//         }, onProgress, onError );
+////
+////         //end obj code
 //        ///////////////////////////////////////////////////////////
 //        
 //        use for blender textures if static obj 
@@ -303,13 +303,13 @@
         var onError = function () { };
         THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
         new THREE.MTLLoader()
-            .setPath( '../../data/data/' )
-            .load( 'obj-material-test2.mtl', function ( materials ) {
+            .setPath( '../../data/data/kdehbfa' )
+            .load( 'teacup.mtl', function ( materials ) {
                 materials.preload();
                 new THREE.OBJLoader()
                     .setMaterials( materials )
-                    .setPath( '../../data/data/' )
-                    .load( 'obj-material-test2.obj', function ( object ) {
+                    .setPath( '../../data/data/kdehbfa' )
+                    .load( 'teacup.obj', function ( object ) {
                         object.scale.set(.4, .4, .4);
                         arWorldRoot.add( object );
                     }, onProgress, onError );
