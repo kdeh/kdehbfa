@@ -6,10 +6,20 @@
 <body style='margin : 0px; overflow: scroll;'>
 <!--  ratio of border to custom image-->
     <a-scene embedded arjs='patternRatio: 0.7'>
+        
+<!--load obj/mtl assets        -->
+<a-assets>
+      
+        <a-asset-item id="clock-obj" src="models/clock.obj"></a-asset-item>
+        <a-asset-item id="clock-mtl" src="models/textures/clock.png"></a-asset-item>
+       
+      </a-assets>
 <!--    custom target img. create object inside a marker-->
     <a-marker type='pattern' url='kdeh_ar_code1.patt'>
 <!--       <a-box position='0 0.5 0' material='color:red' 'opacity: 0.5;'></a-box>-->
 <!--        <a-image src="pattern-targetimgcustom0.7"></a-image>-->
+        
+         <a-obj-model src="#clock-obj" mtl="#clock-mtl" scale="0.5 0.5 0.5"></a-obj-model>
     </a-marker>    
     <a-entity camera></a-entity>
   </a-scene>
