@@ -1,30 +1,26 @@
 <!doctype HTML>
 <html>
+<!--<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">-->
 <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
 <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js"></script>
     
 <body style='margin : 0px; overflow: scroll;'>
 <!--  ratio of border to custom image-->
-    <a-scene embedded arjs='patternRatio: 0.7'>
+<a-scene embedded arjs='patternRatio: 0.7'>
         
 <!--load obj/mtl/img assets        -->
 <a-assets>
       
-<!--
-        <a-asset-item id="clock-obj" src="models/clock.obj"></a-asset-item>
-        <a-asset-item id="clock-mtl" src="models/textures/clock.png"></a-asset-item>
-        <img id="quilt1" src="quilt2.png">
-            <a-asset-item id="sett-obj" src="models/setting.obj"></a-asset-item>
-        <a-asset-item id="sett-mtl" src="models/setting.mtl"></a-asset-item>
--->
-  
+<!--        gltf files-->
     <a-asset-item id="tea" src="models/glTF/teacup.gltf"></a-asset-item>
-    <a-asset-item id="set" src="models/glTF/setting.gltf"></a-asset-item>
     <a-asset-item id="window" src="models/glTF/windows.gltf"></a-asset-item>
-       
+<!--    <a-asset-item id="clock" src="models/glTF/clock.gltf"></a-asset-item>-->
+    <a-asset-item id="phone" src="models/glTF/phoneplate.gltf"></a-asset-item>
+    <a-asset-item id="set" src="models/glTF/setting.gltf"></a-asset-item>   
+    
       </a-assets>
 <!--    custom target img. create object inside a-marker tags. 2nd pattern will have new a-marker tag-->
-    <a-marker type='pattern' url='kdeh_ar_code1.patt'>
+    <a-marker type='pattern' url='kdeh_ar_code4_duo.patt'>
            <a-entity gltf-model="#tea" scale="0.75 0.75 0.75"></a-entity>
     </a-marker>  
         
@@ -34,8 +30,13 @@
     </a-marker>   
         
         <!--    pattern marker 3 -->
-    <a-marker type='pattern' url='kdeh_ar_code3_window.patt'>
-        <a-entity gltf-model="#window" scale="1 1 1"></a-entity>
+    <a-marker type='pattern' url='kdeh_ar_code2_swirl.patt'>
+        <a-entity gltf-model="#set" scale="1 1 1"></a-entity>
+    </a-marker>   
+        
+          <!--    pattern marker 4 -->
+    <a-marker type='pattern' url='kdeh_ar_code1.patt'>
+        <a-entity gltf-model="#phone" scale="1 1 1"></a-entity>
     </a-marker>   
         
 <!-- create camera here-->
