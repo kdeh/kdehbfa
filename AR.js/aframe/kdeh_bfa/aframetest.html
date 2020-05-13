@@ -14,29 +14,31 @@
 <!--        gltf files-->
     <a-asset-item id="tea" src="models/glTF/teacup.gltf"></a-asset-item>
     <a-asset-item id="window" src="models/glTF/windows.gltf"></a-asset-item>
-<!--    <a-asset-item id="clock" src="models/glTF/clock.gltf"></a-asset-item>-->
+    <a-asset-item id="clock" src="models/glTF/clock.gltf"></a-asset-item>
     <a-asset-item id="phone" src="models/glTF/phoneplate.gltf"></a-asset-item>
     <a-asset-item id="set" src="models/glTF/setting.gltf"></a-asset-item>   
     
       </a-assets>
 <!--    custom target img. create object inside a-marker tags. 2nd pattern will have new a-marker tag-->
+    
+<!--    teacup pattern marker 1-->
     <a-marker type='pattern' url='kdeh_ar_code4_duo.patt'>
-           <a-entity gltf-model="#tea" scale="0.75 0.75 0.75"></a-entity>
+           <a-entity gltf-model="#tea" scale="2 2 2"></a-entity>
     </a-marker>  
         
-<!--    pattern marker 2 -->
+<!--   window pattern marker 2 -->
     <a-marker type='pattern' url='kdeh_ar_code3_window.patt'>
-        <a-entity gltf-model="#window" scale="1 1 1"></a-entity>
+        <a-entity gltf-model="#window" scale="2 2 2"></a-entity>
     </a-marker>   
         
-        <!--    pattern marker 3 -->
+        <!--    clock pattern marker 3 -->
     <a-marker type='pattern' url='kdeh_ar_code2_swirl.patt'>
-        <a-entity gltf-model="#set" scale="1 1 1"></a-entity>
+        <a-entity gltf-model="#clock" scale="1 1 1"></a-entity>
     </a-marker>   
         
-          <!--    pattern marker 4 -->
+          <!--   phone pattern marker 4 -->
     <a-marker type='pattern' url='kdeh_ar_code1.patt'>
-        <a-entity gltf-model="#phone" scale="1 1 1"></a-entity>
+        <a-entity gltf-model="#phone" scale="2 2 2"></a-entity>
     </a-marker>   
         
 <!-- create camera here-->
